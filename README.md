@@ -1,13 +1,23 @@
-Proyecto 1 – Script de Respaldo Automático de Logs
+# Proyecto 1 – Respaldo Automático de Logs
 
-🎯 Objetivo: Crear un script en Bash que copie los archivos de logs de /var/log/ a un directorio de respaldo con la fecha incluida en el nombre del archivo.
+## 🎯 Objetivo
+Crear un script que realice un respaldo automático de los archivos `.log` ubicados en `/var/log/`, generando un directorio con la fecha del día, comprimiendo los logs y registrando el resultado en un archivo de control.
 
-📌 Requisitos mínimos:
+## 📌 Requisitos mínimos
+- Crear un directorio `/backup/log/AAAAMMDD/` donde se copien los archivos `.log`.
+- Comprimir ese directorio en un archivo `.tar.gz`.
+- Registrar en `/backup/backup.log` la fecha de ejecución y si el proceso fue exitoso.
+- Eliminar la carpeta temporal una vez generado el `.tar.gz`.
+- Código de salida:
+  - `0` → respaldo exitoso.
+  - `1` → no hay archivos para copiar o error en el proceso.
 
-El script debe crear la carpeta /backup/logs/AAAAMMDD/ (con la fecha del día).
+## ✨ Extra (opcional)
+- Verificar permisos de escritura en `/backup` antes de ejecutar.
+- Guardar también un archivo `/backup/backup.err` con los intentos fallidos.
+- Implementar rotación de backups, manteniendo solo los últimos *N* días.
 
-Copiar todos los .log allí.
-
-Comprimir la carpeta en .tar.gz.
-
-Registrar en un archivo backup.log la fecha y si fue exitoso.
+## 🚀 Entregables
+- Script funcional: `respaldo_atm_bkp_logs.sh`.
+- Carpeta `/backup` con subdirectorios comprimidos por fecha.
+- Archivo de control: `/backup/backup.log`.
